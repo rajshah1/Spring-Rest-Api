@@ -1,6 +1,7 @@
 package com.infosys.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +16,7 @@ import com.infosys.service.ICustomerService;
 public class InfosysController {
 	@Autowired
 	public ICustomerService custservice;
-	@GetMapping("/getAllCustomer")
-	public String getAllCustomer() {
-		return "this will return customer";
-	}
+	
 	@GetMapping("/greet")
 	public String greet() {
 		Date date= new Date();
@@ -31,5 +29,9 @@ public class InfosysController {
 	@GetMapping(value="/getCustomer/{phoneNo}",produces = {"application/json"})
 	public Customer getCustomerById(@PathVariable("phoneNo") Long phone) {
 		return custservice.getCustomerByPhone(phone);
+	}
+	@GetMapping(value = "/getAllCustomer",produces = {"application/json"})
+	public List<Customer> getAllCustomerDetails(){
+		return custservice.getAllCustomer();
 	}
 }

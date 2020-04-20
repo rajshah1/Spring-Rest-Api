@@ -33,5 +33,12 @@ public class CustomerService implements ICustomerService{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<Customer> getAllCustomer() {
+		// TODO Auto-generated method stub
+		return custRepo.findAll();
+		
+	}
 	
 }
